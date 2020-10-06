@@ -7,7 +7,7 @@ public class BulletUpdateScript : MonoBehaviour
 {
     public int bullets;
     public Text bulletText;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,15 +17,18 @@ public class BulletUpdateScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        int score = GameObject.FindObjectOfType<Score> ();
+
         if (Input.GetMouseButtonDown(0))
         {
             bullets--;
         }
-        else if (Input.GetMouseButtonDown(1))
+
+        if(score == 100)
         {
-            bullets++;  
+            bullets += 1;
         }
 
-        bulletText.text = "Kogel: " + bullets.ToString();
+        bulletText.text = string.Format("Kogel: {0}", bullets);
     }
 }
