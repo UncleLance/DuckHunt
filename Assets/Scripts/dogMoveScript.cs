@@ -14,6 +14,10 @@ public class dogMoveScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if ()
+        {
+
+        }
         transform.position += new Vector3(0, 1 * Time.deltaTime);
     }
 
