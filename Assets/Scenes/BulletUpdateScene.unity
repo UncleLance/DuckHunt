@@ -213,8 +213,8 @@ GameObject:
   - component: {fileID: 579166805}
   - component: {fileID: 579166804}
   - component: {fileID: 579166803}
-  - component: {fileID: 579166806}
   - component: {fileID: 579166807}
+  - component: {fileID: 579166806}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -299,10 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de210dae4747ca544a5176cd021d8ebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullets: 0
-  score: 0
   bulletText: {fileID: 1836741826}
-  scoreText: {fileID: 480727367}
 --- !u!114 &579166807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,6 +312,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b736e93735176847a14f6397f53085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 480727367}
+  currentScore: 0
 --- !u!1 &623593495
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,7 +572,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de210dae4747ca544a5176cd021d8ebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullets: 0
-  score: 0
-  bulletText: {fileID: 1836741826}
-  scoreText: {fileID: 0}
+  bulletText: {fileID: 0}

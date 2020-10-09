@@ -5,22 +5,16 @@ using UnityEngine.UI;
 
 public class ScoreScript : MonoBehaviour
 {
-    public static int score;
     public Text scoreText;
+    public int currentScore;
 
-    // Start is called before the first frame update
-    void Start()
+    public void ScoreUpdate(int score)
     {
-        score = 0;
+        currentScore += score;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            score += 20;
-        }
-        scoreText.text = string.Format("Score: {0}", score);
+        scoreText.text = string.Format("Score: {0}", currentScore);
     }
 }
