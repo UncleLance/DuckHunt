@@ -8,17 +8,13 @@ public class dogMoveScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector2(0, -240);
+        transform.position = new Vector3(1, 1, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ()
-        {
-
-        }
-        transform.position += new Vector3(0, 1 * Time.deltaTime);
+        //transform.position += new Vector3(0, 1 * Time.deltaTime);
     }
 
     void moveUp()
