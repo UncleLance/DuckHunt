@@ -33,14 +33,5 @@ public static class SaveScript
     {
         DirectoryInfo directory = new DirectoryInfo(saveFolder);
         saveFiles = directory.GetFiles("*.json");
-
-        /*
-        foreach(FileInfo saveFile in saveFiles)
-        {
-            string save = File.ReadAllText(saveFile.FullName);
-            JsonUtility.FromJson<ScoreScript.SaveScore>(save);
-            Debug.Log(save);
-        }
-        */
     }
 }

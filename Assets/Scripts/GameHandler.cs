@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class GameHandler : MonoBehaviour
 {
     public Button button;
-    public Text text;
+    public Text scoresText;
+    public Text playersText;
     private List<string> playersList = new List<string>();
     private List<int> scoresList = new List<int>();
 
@@ -22,60 +23,34 @@ public class GameHandler : MonoBehaviour
         SaveScript.Load();
         FileInfo[] savedData = SaveScript.saveFiles;
 
+        List<ScoreScript.SaveScore> sortedData = new List<ScoreScript.SaveScore>();
+
         foreach (FileInfo playerData in savedData)
         {
             string data = File.ReadAllText(playerData.FullName);
             ScoreScript.SaveScore loadedData = JsonUtility.FromJson<ScoreScript.SaveScore>(data);
 
-            scoresList.OrderBy(player => loadedData.score).ToList();
-            playersList.Add(loadedData.playerName);
-            /*
-            scoresList.Add(loadedData.score);
-            playersList.Add(loadedData.playerName);
-            */
+            sortedData.Add(loadedData);
         }
 
-        if(playersList.Count > 0)
+        sortedData.OrderByDescending(s => s.score).ToList();
+
+        foreach(ScoreScript.SaveScore data in sortedData)
         {
-            foreach (string playerName in playersList)
-            {
-                Debug.Log(playerName);
-            }
-        }
-        else
-        {
-            Debug.Log("No players found!");
+            playersList.Add(data.playerName);
+            scoresList.Add(data.score);
         }
 
-        if(scoresList.Count > 0)
-        {
-            foreach (int playerScore in scoresList)
-            {
-                Debug.Log(playerScore);
-            }
-
-        }
-        else
-        {
-            Debug.Log("No scores found!");
-        }
-
-        if (text.text == "")
+        if (scoresText.text == "" && playersText.text == "")
         {
             for (int i = 0; i < scoresList.Count && i < playersList.Count; i++)
             {
-                string data = string.Format("{0}          {1}\n", scoresList[i], playersList[i]);
-                text.text += data;
+                string score = string.Format("{0}\n", scoresList[i]);
+                string player = string.Format("{0}\n", playersList[i]);
+
+                scoresText.text += score;
+                playersText.text += player;
             }
         }
-
-        /*
-        foreach (string score in scoreList)
-        {
-            string loadedScore = string.Format("{0} \n",  score);
-            text.text += loadedScore;
-        }
-        */
-
     }
 }
